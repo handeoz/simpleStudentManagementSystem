@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
         );
     }
 
-    ngOnInit() {}
-
+    ngOnInit() {
+        console.log('we are in ng on init');
+    }
 }

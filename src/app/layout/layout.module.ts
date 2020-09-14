@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
@@ -24,7 +24,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
-    imports: [CommonModule, LayoutRoutingModule, NgbDropdownModule, PageHeaderModule, MatToolbarModule, FormsModule, MatDialogModule, MatInputModule, MatSelectModule],
+    imports: [CommonModule, LayoutRoutingModule, NgbDropdownModule, PageHeaderModule, MatToolbarModule, FormsModule, MatDialogModule, MatInputModule, MatSelectModule, NgbCarouselModule],
     exports: [
         HeaderComponent,
         SidebarStudentComponent,
