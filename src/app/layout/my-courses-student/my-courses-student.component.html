@@ -1,0 +1,40 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'My Course List'" [icon]="'fa-table'"></app-page-header>
+    <div class="card mb-3">
+        <div class="card-header">My Course List</div>
+        <table class="card-body table table-hover">
+            <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Professor</th>
+                <th>My Grades</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let course of user.courses">
+                <td>{{course.code}}</td>
+                <td>{{course.name}}</td>
+                <td>{{course.description}}</td>
+                <td>
+                    <p *ngFor="let user of userlist">
+                    <span *ngIf="user.courses.includes(course) && user.usertype === 'professor'">
+                        {{user.username}}
+                    </span>
+                    </p>
+                </td>
+                <td>
+                    <p *ngFor="let user of userlist">
+                    <span *ngIf="user.courses.includes(course)">
+                        <span *ngIf="user.grades[user.courses.indexOf(course)]">
+                            {{user.grades[user.courses.indexOf(course)]}}
+                        </span>
+                    </span>
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Course List'" [icon]="'fa-table'"></app-page-header>
+    <div class="card mb-3">
+        <div class="card-header">Course List</div>
+        <table class="card-body table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Professor</th>
+                <th>Students</th>
+                <th>Grades</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let course of courselist">
+                <th scope="row" contenteditable="true">{{course.id}}</th>
+                <td contenteditable="true">{{course.code}}</td>
+                <td contenteditable="true">{{course.name}}</td>
+                <td contenteditable="true">{{course.description}}</td>
+                <td contenteditable="true">
+                    <p *ngFor="let user of userlist">
+                    <span *ngIf="user.courses.includes(course) && user.usertype === 'professor'">
+                        {{user.username}}
+                    </span>
+                    </p>
+                </td>
+                <td contenteditable="true">
+                    <p *ngFor="let user of userlist">
+                    <span *ngIf="user.courses.includes(course) && user.usertype === 'student'">
+                        {{user.username}}
+                    </span>
+                    </p>
+                </td>
+                <td contenteditable="true">
+                    <p *ngFor="let user of userlist">
+                    <span *ngIf="user.courses.includes(course) && user.usertype === 'student'">
+                        <span *ngIf="user.grades[user.courses.indexOf(course)]">
+                            {{user.grades[user.courses.indexOf(course)]}}
+                        </span>
+                    </span>
+                    </p>
+                </td>
+                <td>
+                    <button class="btn-sm" (click)="delete(course.id)">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
