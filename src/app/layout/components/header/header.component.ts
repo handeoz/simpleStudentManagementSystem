@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { User } from '../../../shared/user';
+import { UserService } from '../../../user.service';
+import { USERS } from '../../../shared/users';
 
 @Component({
     selector: 'app-header',
@@ -7,9 +10,12 @@ import { NavigationEnd, Router } from '@angular/router';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+    public currentUser: any;
     public pushRightClass: string;
+    // user: User;
 
-    constructor(public router: Router) {
+    constructor(public router: Router, private userService: UserService,
+                private route: ActivatedRoute) {
         this.router.events.subscribe((val) => {
             if (val instanceof NavigationEnd && window.innerWidth <= 992 && this.isToggled()) {
                 this.toggleSidebar();
@@ -33,5 +39,9 @@ export class HeaderComponent implements OnInit {
 
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
+    }
+
+    findUsername() {
+        return localStorage.getItem('username');
     }
 }

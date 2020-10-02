@@ -17,25 +17,25 @@
             </thead>
             <tbody>
             <tr *ngFor="let course of courselist">
-                <th scope="row" contenteditable="true">{{course.id}}</th>
-                <td contenteditable="true">{{course.code}}</td>
-                <td contenteditable="true">{{course.name}}</td>
-                <td contenteditable="true">{{course.description}}</td>
-                <td contenteditable="true">
+                <th scope="row" id="id">{{course.id}}</th>
+                <td id="code">{{course.code}}</td>
+                <td id="name">{{course.name}}</td>
+                <td id="description">{{course.description}}</td>
+                <td>
                     <p *ngFor="let user of userlist">
                     <span *ngIf="user.courses.includes(course) && user.usertype === 'professor'">
                         {{user.username}}
                     </span>
                     </p>
                 </td>
-                <td contenteditable="true">
+                <td>
                     <p *ngFor="let user of userlist">
                     <span *ngIf="user.courses.includes(course) && user.usertype === 'student'">
                         {{user.username}}
                     </span>
                     </p>
                 </td>
-                <td contenteditable="true">
+                <td>
                     <p *ngFor="let user of userlist">
                     <span *ngIf="user.courses.includes(course) && user.usertype === 'student'">
                         <span *ngIf="user.grades[user.courses.indexOf(course)]">
@@ -45,6 +45,7 @@
                     </p>
                 </td>
                 <td>
+                    <button class="btn-sm" (click)="edit(course.id)">Edit</button>
                     <button class="btn-sm" (click)="delete(course.id)">Delete</button>
                 </td>
             </tr>

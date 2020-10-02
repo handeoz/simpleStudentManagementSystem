@@ -3,7 +3,7 @@
     <div class="card mb-3">
         <div class="card-header">User List</div>
 <!--        <a mat-button (click)="new()"><span class="fa fa-sign-in fa-lg"></span>New</a>-->
-        <button class="btn-sm" routerLink="/signup">New</button>
+        <button class="btn-sm" (click)="openAddUserForm()">NEW USER</button>
         <table class="card-body table table-hover" id="user_datatable">
             <thead>
             <tr>
@@ -11,25 +11,22 @@
                 <th>Username</th>
                 <th>Password</th>
                 <th>Usertype</th>
-                <th>IsLoggedin</th>
                 <th>Courses</th>
                 <th>Grades</th>
-                <th>Image</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let user of userlist">
-                <th scope="row" contenteditable="true">{{user.id}}</th>
-                <td contenteditable="true">{{user.username}}</td>
-                <td contenteditable="true">{{user.password}}</td>
-                <td contenteditable="true">{{user.usertype}}</td>
-                <td contenteditable="true">{{user.isLoggedIn}}</td>
-                <td contenteditable="true"><p *ngFor="let course of user.courses">{{course.name}}</p></td>
-                <td contenteditable="true"><p *ngFor="let grade of user.grades">{{grade}}</p></td>
-                <td contenteditable="true"><img src="{{user.image}}"></td>
+                <th scope="row" contenteditable="true" id="id">{{user.id}}</th>
+                <td contenteditable="true" id="username">{{user.username}}</td>
+                <td contenteditable="true" id="password">{{user.password}}</td>
+                <td contenteditable="true" id="usertype">{{user.usertype}}</td>
+                <td contenteditable="true" id="course"><p *ngFor="let course of user.courses">{{course.name}}</p></td>
+                <td contenteditable="true" id="grade"><p *ngFor="let grade of user.grades">{{grade}}</p></td>
                 <td>
                     <button class="btn-sm" (click)="delete(user.id)">Delete</button>
+                    <button class="btn-sm" (click)="edit(user.id)">Edit</button>
                 </td>
             </tr>
             </tbody>

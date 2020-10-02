@@ -64,4 +64,8 @@ export class SidebarComponent implements OnInit {
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
     }
+
+    checkUsertype() {
+        return localStorage.getItem('usertype');
+    }
 }

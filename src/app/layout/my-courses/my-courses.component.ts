@@ -2,22 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { USERS } from '../../shared/users';
 import { COURSES } from '../../shared/courses';
-import { User } from '../../shared/user';
 
 @Component({
-  selector: 'app-my-students',
-  templateUrl: './my-students.component.html',
-  styleUrls: ['./my-students.component.css'],
+  selector: 'app-my-courses',
+  templateUrl: './my-courses.component.html',
+  styleUrls: ['./my-courses.component.css'],
   animations: [routerTransition()]
-
 })
-export class MyStudentsComponent implements OnInit {
+export class MyCoursesComponent implements OnInit {
     userlist = USERS;
     courselist = COURSES;
     username = localStorage.getItem('username');
     user = this.userlist.find(usr => usr.username === this.username);
 
-    constructor() { }
+  constructor() { }
 
   ngOnInit(): void {
   }

@@ -1,0 +1,43 @@
+<h4 mat-dialog-title>EDIT USER</h4>
+<mat-toolbar>
+    EDIT
+    <span></span>
+    <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+<p>{{ user | json }}</p>
+
+<form novalidate #editForm="ngForm" (ngSubmit)="onSubmit()">
+    <mat-dialog-content>
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Id" type="text"
+                       [(ngModel)]="user.id" name="id"
+                       #id="ngModel" required>
+                <mat-error *ngIf="id.errors?.required">ID is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Username" type="text"
+                       [(ngModel)]="user.username" name="username"
+                       #username="ngModel" required>
+                <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Password" type="text"
+                       [(ngModel)]="user.password" name="password"
+                       #password="ngModel" required>
+                <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-option>Student</mat-option>
+                <mat-option>Professor</mat-option>
+            </mat-form-field>
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <span class="flex-spacer"></span>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button type="submit" class="background-primary text-floral-white"
+                [disabled]="loginForm.form.invalid">Login</button>
+    </mat-dialog-actions>
+</form>

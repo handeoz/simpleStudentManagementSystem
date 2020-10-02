@@ -1,1 +1,35 @@
-<p>My students works</p>
+<div [@routerTransition]>
+    <app-page-header [heading]="'User List'" [icon]="'fa-table'"></app-page-header>
+    <div class="card mb-3">
+        <div class="card-header">User List</div>
+        <!--        <a mat-button (click)="new()"><span class="fa fa-sign-in fa-lg"></span>New</a>-->
+        <table class="card-body table table-hover" id="user_datatable">
+            <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Students</th>
+                <th>Grades</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let course of user.courses">
+            <tr>
+                <th scope="row">{{course.name}}</th>
+                <td><p *ngFor="let usr of userlist">
+                    <span *ngIf="usr.usertype==='student' && usr.courses.includes(course)">
+                    {{usr.username}}
+                    </span>
+                </p></td>
+                <td contenteditable="true">
+                    <p *ngFor="let usr of userlist">
+                    <span *ngIf="usr.courses.includes(course) && usr.usertype === 'student'">
+                        <span *ngIf="usr.grades[usr.courses.indexOf(course)]">
+                            {{usr.grades[usr.courses.indexOf(course)]}}
+                        </span>
+                    </span>
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
