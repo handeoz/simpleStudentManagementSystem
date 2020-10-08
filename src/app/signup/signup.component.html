@@ -1,10 +1,10 @@
-<div [@routerTransition] class="login-page">
-    <div class="row justify-content-md-center">
+<div class="row justify-content-md-center">
         <div class="col-md-4">
             <img class="user-avatar" src="assets/images/logo.png" width="150px" />
-            <h1>Create New User</h1>
+            <h3>Add User</h3>
             <form role="form">
                 <div class="form-content">
+
                     <div class="form-group">
                         <input [(ngModel)]="user.id" name="id" #id
                             [placeholder]="'ID'"
@@ -12,6 +12,7 @@
                             type="text"
                         />
                     </div>
+
                     <div class="form-group">
                         <input [(ngModel)]="user.username" name="username" #username
                             [placeholder]="'Username'"
@@ -27,6 +28,7 @@
                             type="password"
                         />
                     </div>
+
                     <div class="form-group">
                         <select class="form-control custom-select" #usertype>
                             <option>Select user type</option>
@@ -35,29 +37,68 @@
                             </option>
                         </select>
                     </div>
+
                     <div class="form-group">
-                        <div class="form-group">
                             <select class="form-control custom-select" #course>
                                 <option>Select course</option>
                                 <option *ngFor="let course of courselist"
                                         [(ngModel)]="user.courses[0]" name="course">{{course.name}}
                                 </option>
                             </select>
-                            <hr>
-                            <select class="form-control custom-select" #grade>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control custom-select" #grade>
                                 <option>Select grade</option>
                                 <option *ngFor="let grade of Grades"
                                         [(ngModel)]="user.grades[0]" name="grades">{{grade}}
                                 </option>
                             </select>
-                        </div>
                     </div>
+
                 </div>
                 <a [routerLink]="['/dashboard']" class="btn rounded-btn"
-                   (click)="addUser(id, username, password, usertype, course, grade)">{{ 'Register'}}</a
+                   (click)="addUser(id, username, password)">{{ 'Register'}}</a
                 >&nbsp;
-                <a [routerLink]="['/login']" class="btn rounded-btn">{{ 'Log in'}}</a>
+                <a [routerLink]="['/login']" class="btn rounded-btn">{{ 'Log in'}}</a
+                >&nbsp;
+                <a class="btn rounded-btn" mat-dialog-close="">{{ 'Cancel'}}</a>
             </form>
         </div>
     </div>
-</div>
+
+<!--<mat-toolbar color="primary">
+    ADD NEW USER
+    <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+<form novalidate #signupForm="ngForm" (ngSubmit)="addUser(id, username, password)">
+    <mat-dialog-content>
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Id" type="text"
+                       [(ngModel)]="user.id" name="id"
+                       #id="ngModel" required>
+                <mat-error *ngIf="id.errors?.required">ID is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Username" type="text"
+                       [(ngModel)]="user.username" name="username"
+                       #username="ngModel" required>
+                <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Password" type="password"
+                       [(ngModel)]="user.password" name="password"
+                       #password="ngModel" required>
+                <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+            </mat-form-field>
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button type="submit"
+                [disabled]="signupForm.form.invalid">New User</button>
+    </mat-dialog-actions>
+</form>-->
+

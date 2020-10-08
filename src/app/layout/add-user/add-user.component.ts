@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GRADES, User, UserType } from '../../shared/user';
 import { COURSES } from '../../shared/courses';
 import { USERS } from '../../shared/users';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user',
@@ -14,14 +15,13 @@ export class AddUserComponent implements OnInit {
     courselist = COURSES;
     Grades = GRADES;
     user = new User();
-
     selectedType = '';
     selectedCourse = '';
     selectedGrade = '';
-
     userID;
 
-  constructor(public dialogRef: MatDialogRef<AddUserComponent>) {
+  constructor(public dialogRef: MatDialogRef<AddUserComponent>,
+              private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -56,5 +56,13 @@ export class AddUserComponent implements OnInit {
 
     radioGradeChangeHandler(event: any) {
         this.selectedGrade = event.target.value;
+    }
+
+    closeDialog() {
+        this.dialogRef.close();
+    }
+
+    onNoClick(): void {
+        this.dialogRef.close();
     }
 }

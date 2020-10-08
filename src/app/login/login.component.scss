@@ -19,6 +19,21 @@ $topnav-background-color: #222;
         padding: 0;
     }
 
+    .signup-page {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        overflow: auto;
+        background: $topnav-background-color;
+        text-align: center;
+        color: #fff;
+        padding: 3em;
+
+        .col-lg-4 {
+            padding: 0;
+        }
+    }
+
     .input-lg {
         height: 46px;
         padding: 10px 16px;
@@ -102,5 +117,17 @@ $topnav-background-color: #222;
         -webkit-border-radius: 50%;
         border-radius: 50%;
         border: 2px solid #fff;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .title {
+        color: grey;
+        font-size: 18px;
     }
 }

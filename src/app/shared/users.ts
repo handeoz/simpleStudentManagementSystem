@@ -7,8 +7,6 @@ export const USERS: User[] = [
         username: 'Admin',
         password: '123',
         usertype: 'admin',
-        image: '/assets/images/admin.png',
-        isLoggedIn: false,
         courses: [],
         grades: []
     },
@@ -17,8 +15,6 @@ export const USERS: User[] = [
         username: 'Test_student',
         password: 'test_password',
         usertype: 'student',
-        image: '/assets/images/f_avatar.jpg',
-        isLoggedIn: false,
         courses: [COURSES[0], COURSES[7]],
         grades: ['DD', 'CB']
     },
@@ -27,18 +23,14 @@ export const USERS: User[] = [
         username: 'Erdinc',
         password: 'pass_milano',
         usertype: 'student',
-        image: '/assets/images/m_avatar.jpg',
-        isLoggedIn: false,
-        courses: [COURSES[0], COURSES[5]],
-        grades: ['BA', 'BB']
+        courses: [COURSES[0], COURSES[5], COURSES[6]],
+        grades: ['BA', 'BB', 'DD']
     },
     {
         id: 'S2',
         username: 'Baris',
         password: 'meinpasswort',
         usertype: 'student',
-        image: '/assets/images/m_avatar.jpg',
-        isLoggedIn: false,
         courses: [COURSES[2], COURSES[3], COURSES[4]],
         grades: ['BA', 'AA', 'AA']
     },
@@ -47,18 +39,14 @@ export const USERS: User[] = [
         username: 'Hamide',
         password: 'taskisla_pass',
         usertype: 'student',
-        image: '/assets/images/f_avatar.png',
-        isLoggedIn: false,
-        courses: [COURSES[0], COURSES[2], COURSES[4]],
-        grades: ['BA', 'BB', 'AA']
+        courses: [COURSES[0], COURSES[2], COURSES[4], COURSES[6]],
+        grades: ['BA', 'BB', 'AA', 'CC']
     },
     {
         id: 'S4',
         username: 'Berk',
         password: 'izmir2020',
         usertype: 'student',
-        image: '/assets/images/m_avatar.jpg',
-        isLoggedIn: false,
         courses: [COURSES[1], COURSES[3], COURSES[4]],
         grades: ['BA', 'CC', 'BB']
     },
@@ -67,8 +55,6 @@ export const USERS: User[] = [
         username: 'Hande',
         password: '123456',
         usertype: 'student',
-        image: '/assets/images/f_avatar.png',
-        isLoggedIn: false,
         courses: [COURSES[0], COURSES[5], COURSES[6]],
         grades: ['CC', 'DD', 'BB']
     },
@@ -77,8 +63,6 @@ export const USERS: User[] = [
         username: 'Test_professor',
         password: 'test_password',
         usertype: 'professor',
-        image: '/assets/images/m_avatar.png',
-        isLoggedIn: false,
         courses: [COURSES[7]],
         grades: []
     },
@@ -87,8 +71,6 @@ export const USERS: User[] = [
         username: 'Badur',
         password: 'p4ssw0rd',
         usertype: 'professor',
-        image: '/assets/images/m_avatar.png',
-        isLoggedIn: false,
         courses: [COURSES[3], COURSES[5]],
         grades: []
     },
@@ -97,8 +79,6 @@ export const USERS: User[] = [
         username: 'Tukel',
         password: 'ec0npass',
         usertype: 'professor',
-        image: '/assets/images/m_avatar.png',
-        isLoggedIn: false,
         courses: [COURSES[0], COURSES[1]],
         grades: []
     },
@@ -107,8 +87,6 @@ export const USERS: User[] = [
         username: 'Birgul',
         password: '123456',
         usertype: 'professor',
-        image: '/assets/images/f_avatar2.png',
-        isLoggedIn: false,
         courses: [COURSES[4]],
         grades: []
     },
@@ -117,8 +95,6 @@ export const USERS: User[] = [
         username: 'Guryay',
         password: '123cyber',
         usertype: 'professor',
-        image: '/assets/images/m_avatar.png',
-        isLoggedIn: false,
         courses: [COURSES[6]],
         grades: []
     },
@@ -127,8 +103,6 @@ export const USERS: User[] = [
         username: 'Dogerlioglu',
         password: 'pass_test',
         usertype: 'professor',
-        image: '/assets/images/f_avatar2.png',
-        isLoggedIn: false,
         courses: [COURSES[2], COURSES[7]],
         grades: []
     }

@@ -1,6 +1,11 @@
 <form (ngSubmit)="addUser(user.id, user.username, user.password, selectedType, selectedCourse, selectedGrade)">
+    <div class>
+        <button mat-button mat-dialog-close>&times;</button>
+        <mat-dialog-content>
+
     <div class="form-group row">
-        <label for="inputId3" class="col-sm-2 col-form-label">ID</label>
+
+       <label for="inputId3" class="col-sm-2 col-form-label">ID</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="inputId3" placeholder="ID"
                    [(ngModel)]="user.id" [ngModelOptions]="{standalone: true}">
@@ -68,23 +73,87 @@
     </fieldset>
     <p><span>You selected: {{selectedGrade}}</span></p>
 
-&lt;!&ndash;    <div class="form-group row">
-        <div class="col-sm-2">Checkbox</div>
-        <div class="col-sm-10">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                <label class="form-check-label" for="gridCheck1">
-                    Example checkbox
-                </label>
-            </div>
-        </div>
-    </div>&ndash;&gt;
+        </mat-dialog-content>
+
     <div class="form-group row">
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary" *ngIf="user.id === ''">ADD</button> &nbsp;
-            <button type="submit" class="btn btn-primary" *ngIf="user.id !== ''">EDIT</button> &nbsp;
-            <button mat-dialog-close="" type="button" class="btn btn-primary">CANCEL</button>
+            <button type="submit" mat-flat-button color="accent">ADD</button> &nbsp;
+            <button mat-dialog-close="" type="button" mat-flat-button color="primary">CANCEL</button>
         </div>
     </div>
-
+    </div>
 </form>
+
+
+<!--<mat-card class="card">
+<mat-toolbar>
+    ADD USER
+    <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+<p>{{ user | json }}</p>
+
+<form novalidate #addUserForm="ngForm"
+      (ngSubmit)="addUser(user.id, user.username, user.password, selectedType, selectedCourse, selectedGrade)">
+    <mat-dialog-content>
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Id" type="text"
+                       [(ngModel)]="user.id" name="id"
+                       #id="ngModel" required>
+                <mat-error *ngIf="id.errors?.required">ID is required</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Username" type="text"
+                       [(ngModel)]="user.username" name="username"
+                       #username="ngModel" required>
+                <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Password" type="text"
+                       [(ngModel)]="user.password" name="password"
+                       #password="ngModel" required>
+                <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <input matInput *ngFor="let utype of userTypes" (change)="radioTypeChangeHandler($event)">
+                &lt;!&ndash;<md-checkbox (change)="radioTypeChangeHandler($event)">{{utype}}</md-checkbox>&ndash;&gt;
+            </mat-form-field>
+        </p>
+
+            <&lt;!&ndash;mat-form-field>
+                <section *ngFor="let utype of userTypes">
+                <mat-checkbox [(ngModel)]="selectedType"
+                              #selectedType="ngModel"
+                              [value]="utype"
+                              (change)="radioTypeChangeHandler($event)"
+                              required>{{utype}}</mat-checkbox>
+                <mat-error *ngIf="selectedType.errors?.required">Type is required</mat-error>
+                </section>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Course" type="text"
+                       [(ngModel)]="selectedCourse" name="course"
+                       #selectedCourse="ngModel" required>
+                <mat-error *ngIf="selectedCourse.errors?.required">Course is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Grade" type="text"
+                       [(ngModel)]="selectedGrade" name="grade"
+                       #selectedCourse="ngModel" required>
+            </mat-form-field>&ndash;&gt;
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button type="submit"
+                [disabled]="addUserForm.form.invalid">Add</button>
+    </mat-dialog-actions>
+</form>
+</mat-card>-->

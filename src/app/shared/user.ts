@@ -5,19 +5,15 @@ export class User {
     username: string;
     password: string;
     usertype: string;
-    isLoggedIn: boolean;
     courses: Course[];
     grades?: String[];
-    image?: string;
 
     constructor() {
         this.id = '';
         this.username = '';
         this.password = '';
-        this.isLoggedIn = false;
         this.courses = [];
         this.grades = [];
-        this.image = '';
     }
 }
 

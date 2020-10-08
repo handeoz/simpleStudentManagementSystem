@@ -8,14 +8,8 @@ import { Router } from '@angular/router';
 })
 
 export class AppComponent {
-    currentUser: any;
 
-    constructor(
-        private router: Router,
-    ) {
+    constructor() {
     }
 
-    logout() {
-        this.router.navigate(['/login']);
-    }
 }

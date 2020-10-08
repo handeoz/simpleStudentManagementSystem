@@ -5,6 +5,9 @@ import { COURSES } from '../shared/courses';
 import { GRADES } from '../shared/user';
 import { USERS } from '../shared/users';
 import { User } from '../shared/user';
+import { CommonService } from '../services/common.service';
+
+import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
     selector: 'app-signup',
@@ -12,18 +15,33 @@ import { User } from '../shared/user';
     styleUrls: ['./signup.component.scss'],
     animations: [routerTransition()]
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent {
     userType = UserType;
     courselist = COURSES;
     Grades = GRADES;
-    //user = <User> {};
-    user = new User ();
+    user = <User> {};
+    // user = new User ();
 
-    constructor() {}
+    constructor(    public dialogRef: MatDialogRef<SignupComponent>
+    ) {
 
-    ngOnInit() {}
+    }
 
-    addUser(id, username, password, usertype, course, grade) {
+    addUser(id, username, password) {
+        this.user.id = id;
+        this.user.username = username;
+        this.user.password = password;
+        USERS.push(this.user);
+        console.log('User: ', this.user);
+        this.dialogRef.close();
+    }
+
+}
+
+    // ngOnInit() {}
+
+
+/*    addUser(id, username, password, usertype, course, grade) {
         this.user.id = id;
         this.user.username = username;
         this.user.password = password;
@@ -31,5 +49,7 @@ export class SignupComponent implements OnInit {
         this.user.courses[0] = course;
         this.user.grades[0] = grade;
         USERS.push(this.user);
-    }
-}
+    }*/
+
+
+
