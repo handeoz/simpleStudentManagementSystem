@@ -1,0 +1,49 @@
+<form (ngSubmit)="editGrades(selectedStudent, selectedGrade)">
+    <div>
+        <div class="modal-header">
+            <h2 class="modal-title">EDIT GRADE <br>{{course.name}}</h2>
+            <button mat-button mat-dialog-close class="close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <mat-dialog-content>
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Students</legend>
+                    <div class="col-sm-10" *ngFor="let user of userlist">
+                        <div class="form-check" *ngIf="user.usertype === 'student' && user.courses.includes(course)">
+                            <input class="form-check-input" type="radio" name="student" id="student" [value]="user.username"
+                                   (change)="radioStudentChangeHandler($event)">
+                            <label class="form-check-label" for="student">
+                                {{user.username}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <p><span>You selected: {{selectedStudent}}</span></p>
+
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Grades</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check" *ngFor="let grade of Grades" >
+                            <input class="form-check-input" type="radio" name="grade" id="grade" [value]="grade"
+                                   (change)="radioGradeChangeHandler($event)">
+                            <label class="form-check-label" for="grade">
+                                {{grade}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <p><span>You selected: {{selectedGrade}}</span></p>
+
+        </mat-dialog-content>
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" mat-flat-button color="accent">UPDATE</button> &nbsp;
+                <button mat-dialog-close="" type="button" mat-flat-button color="primary">CANCEL</button>
+            </div>
+        </div>
+    </div>
+</form>

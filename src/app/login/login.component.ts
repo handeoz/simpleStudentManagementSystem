@@ -40,9 +40,10 @@ export class LoginComponent implements OnInit {
                 this.id = this.userlist[i].id;
                 this.username = this.userlist[i].username;
                 this.usertype = this.userlist[i].usertype;
+                localStorage.setItem('id', this.id);
                 localStorage.setItem('username', this.username);
                 localStorage.setItem('usertype', this.usertype);
-                this.router.navigate(['/dashboard', this.id]);
+                this.router.navigate(['/dashboard', localStorage.getItem('username')]);
                 return;
             }
             }

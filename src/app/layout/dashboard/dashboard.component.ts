@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { UserService } from '../../user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,7 +12,9 @@ import { routerTransition } from '../../router.animations';
 export class DashboardComponent implements OnInit {
     public sliders: Array<any> = [];
 
-    constructor() {
+    constructor(private route: ActivatedRoute,
+                private userService: UserService) {
+
         this.sliders.push(
             {
                 imagePath: 'assets/images/slider1.jpg',

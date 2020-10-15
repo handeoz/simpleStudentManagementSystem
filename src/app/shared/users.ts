@@ -53,7 +53,7 @@ export const USERS: User[] = [
     {
         id: 'S5',
         username: 'Hande',
-        password: '123456',
+        password: '123',
         usertype: 'student',
         courses: [COURSES[0], COURSES[5], COURSES[6]],
         grades: ['CC', 'DD', 'BB']
@@ -69,7 +69,7 @@ export const USERS: User[] = [
     {
         id: 'P1',
         username: 'Badur',
-        password: 'p4ssw0rd',
+        password: '123',
         usertype: 'professor',
         courses: [COURSES[3], COURSES[5]],
         grades: []
@@ -85,7 +85,7 @@ export const USERS: User[] = [
     {
         id: 'P3',
         username: 'Birgul',
-        password: '123456',
+        password: '123',
         usertype: 'professor',
         courses: [COURSES[4]],
         grades: []

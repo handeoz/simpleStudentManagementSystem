@@ -1,0 +1,82 @@
+<form>
+    <div class>
+        <div class="modal-header">
+            <h2 class="modal-title">MANAGE COURSES</h2>
+            <button mat-button mat-dialog-close class="close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <mat-dialog-content>
+
+<!--            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Courses</legend>
+                    <div class="col-sm-10" >
+                        <div *ngFor="let course of user.courses">
+                            <td name="courses" id="courses">
+                            <label class="form-check-label" for="courses">
+                                {{course.name}}
+                            </label>
+                            </td>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>-->
+
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Courses</legend>
+                    <div class="col-sm-10" >
+                        <div *ngFor="let course of user.courses">
+                            <td name="deneme" id="deneme">
+                                <label class="form-check-label" for="deneme">
+                                    {{course.name}}
+                                </label> &nbsp;
+                                <button mat-flat-button color="accent" (click)="delete()">Delete</button>
+                                <br><br>
+                            </td>
+
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">All Courses</legend>
+                    <div class="col-sm-10" *ngFor="let course of courselist">
+                        <div class="form-check" *ngIf="!user.courses.includes(course)" >
+                            <input class="form-check-input" type="radio" name="allcourses" id="allcourses" [value]="course.name"
+                            (change)="radioCourseChangeHandler($event)" >
+                            <label class="form-check-label" for="allcourses">
+                                {{course.name}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group" *ngIf="user.usertype==='student'">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Grades</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check" *ngFor="let grade of Grades" >
+                            <input class="form-check-input" type="radio" name="grade" id="grade" [value]="grade"
+                            (change)="radioGradeChangeHandler($event)">
+                            <label class="form-check-label" for="grade">
+                                {{grade}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <p><span>You selected: {{selectedGrade}}</span></p>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="mat-button" mat-flat-button color="accent" (click)="add()">ADD</button>&nbsp;
+                </div>
+            </div>
+
+
+        </mat-dialog-content>
+    </div>
+</form>

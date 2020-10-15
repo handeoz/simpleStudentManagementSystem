@@ -25,7 +25,7 @@ const routes: Routes = [
         path: '',
         component: HomeLayoutComponent,
         children: [
-            { path: 'dashboard/:id', component: DashboardComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+            { path: 'dashboard/:username', component: DashboardComponent, pathMatch: 'full', canActivate: [AuthGuard] },
             { path: 'user-list', component: UserListComponent, pathMatch: 'full'},
             { path: 'course-list', component: CourseListComponent, pathMatch: 'full'},
             { path: 'my-students', component: MyStudentsComponent, pathMatch: 'full'},
@@ -34,7 +34,7 @@ const routes: Routes = [
         ]
     },
     { path: '', redirectTo: '/login', pathMatch: 'full'},
-    //{ path: 'signup', component: SignupComponent, pathMatch: 'full'},
+    // { path: 'signup', component: SignupComponent, pathMatch: 'full'},
     {
         path: 'error',
         loadChildren: () => import('./server-error/server-error.module').then((m) => m.ServerErrorModule)

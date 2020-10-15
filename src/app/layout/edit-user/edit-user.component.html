@@ -1,6 +1,9 @@
-<form (ngSubmit)="editUser(user.id)">
+<form (ngSubmit)="editUser(selectedCourse, selectedGrade)">
     <div class>
-        <button mat-button mat-dialog-close>&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title">EDIT USER</h2>
+            <button mat-button mat-dialog-close class="close"><span aria-hidden="true">&times;</span></button>
+        </div>
         <mat-dialog-content>
 
             <div class="form-group row">
@@ -8,7 +11,7 @@
                 <label for="inputId3" class="col-sm-2 col-form-label">ID</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputId3" placeholder="ID"
-                           [(ngModel)]="user.id" [ngModelOptions]="{standalone: true}">
+                    [(ngModel)]="user.id" [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
             <div class="form-group row">
@@ -18,6 +21,7 @@
                            [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
+
             <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-10">
@@ -25,13 +29,13 @@
                            [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
-            <fieldset class="form-group">
+            <!--<fieldset class="form-group">
                 <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">Usertype</legend>
                     <div class="col-sm-10">
                         <div class="form-check" *ngFor="let utype of userTypes">
                             <input class="form-check-input" type="radio" name="utype" id="utype" [value]="utype"
-                                   >
+                                   [checked]="user.usertype === utype">
                             <label class="form-check-label" for="utype">
                                 {{utype}}
                             </label>
@@ -39,15 +43,15 @@
                     </div>
                 </div>
             </fieldset>
-            <p><span>You selected: {{selectedType}}</span></p>
+            <p><span>You selected: {{selectedType}}</span></p>-->
 
-            <fieldset class="form-group">
+<!--            <fieldset class="form-group">
                 <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">Courses</legend>
-                    <div class="col-sm-10">
-                        <div class="form-check" *ngFor="let course of courselist">
+                    <div class="col-sm-10" *ngFor="let course of courselist">
+                        <div class="form-check" *ngIf="user.courses.includes(course)">
                             <input class="form-check-input" type="radio" name="course" id="course" [value]="course.name"
-                                   >
+                            >
                             <label class="form-check-label" for="course">
                                 {{course.name}}
                             </label>
@@ -57,7 +61,7 @@
             </fieldset>
             <p><span>You selected: {{selectedCourse}}</span></p>
 
-            <fieldset class="form-group" *ngIf="selectedType === 'Student'">
+            <fieldset class="form-group" *ngIf="user.usertype==='student'">
                 <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">Grades</legend>
                     <div class="col-sm-10">
@@ -71,29 +75,15 @@
                     </div>
                 </div>
             </fieldset>
-            <p><span>You selected: {{selectedGrade}}</span></p>
-
+            <p><span>You selected: {{selectedGrade}}</span></p>-->
         </mat-dialog-content>
 
         <div class="form-group row">
             <div class="col-sm-10">
-                <button type="submit" class="mat-button" mat-flat-button color="accent">EDIT</button> &nbsp;
-                <button mat-dialog-close="" class="mat-button" mat-flat-button color="primary" type="button">CANCEL</button>
+                <button type="submit" class="mat-button" mat-flat-button color="accent" (click)="editUser(selectedCourse, selectedGrade)">CLOSE</button>&nbsp;
+                <button type="button" class="mat-button" mat-flat-button color="accent" (click)="manageCourses(user)">MANAGE COURSES</button> &nbsp;&nbsp;
+<!--                <button mat-dialog-close="" class="mat-button" mat-flat-button color="primary" type="button">CANCEL</button>-->
             </div>
         </div>
     </div>
 </form>
-
-<!--<h1 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h1>
-<div mat-dialog-content>
-    <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
-        <input placeholder="{{action}} Name" matInput [(ngModel)]="local_data.name">
-    </mat-form-field>
-    <ng-template #elseTemplate>
-        Sure to delete <b>{{local_data.name}}</b>?
-    </ng-template>
-</div>
-<div mat-dialog-actions>
-    <button mat-button (click)="doAction()">{{action}}</button>
-    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
-</div>-->

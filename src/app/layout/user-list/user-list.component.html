@@ -25,6 +25,7 @@
                 <td id="grade_{{user.id}}"><p *ngFor="let grade of user.grades">{{grade}}</p></td>
                 <td>
                     <button mat-flat-button color="primary" (click)="edit(user.id)" id="edit_{{user.username}}">Edit</button>
+                    &nbsp;
                     <button mat-flat-button color="primary" (click)="delete(user.id)">Delete</button>
                 </td>
             </tr>

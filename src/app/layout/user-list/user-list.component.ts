@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { USERS } from '../../shared/users';
 import { COURSES } from '../../shared/courses';
@@ -34,21 +34,21 @@ const ELEMENT_DATA: UsersData[] = [
 
 })
 export class UserListComponent implements OnInit {
-    // displayedColumns: string[] = ['id', 'username', 'password', 'usertype', 'courses', 'grades', 'action'];
-    // dataSource = ELEMENT_DATA;
-
     userlist = USERS;
     courselist = COURSES;
     user = <User>{};
     datatabindex: number;
-
-    // @ViewChild(MatTable, {static: true}) table: MatTable<any>;
 
     constructor(public dialog: MatDialog) {
     }
 
     ngOnInit(): void {
     }
+
+/*    ngAfterViewInit() {
+        console.log(this.divView);
+        this.divView.nativeElement.innerHTML = 'Hello Angular 10!';
+    }*/
 
     delete(id) {
         this.datatabindex = this.userlist.map(function(item) {
@@ -66,66 +66,20 @@ export class UserListComponent implements OnInit {
 
         if (this.userlist[this.datatabindex].usertype === 'admin') {
             alert('You are trying to edit Admin.');
-        }else this.openEditUserForm();
+        } else this.openEditUserForm(id);
     }
 
     openAddUserForm() {
-        this.dialog.open(AddUserComponent, { width: '700px', height: '600px', position: { left: '600px' } });
+        this.dialog.open(AddUserComponent);
     }
 
 
-    openEditUserForm() {
-        this.dialog.open(EditUserComponent, { width: '700px', height: '600px', position: { left: '600px' } });
-    }
-
-    /*openDialog (action, obj) {
-        obj.action = action;
-        const dialogRef = this.dialog.open(EditUserComponent, {
-            width: '600px',
-            height: '600px',
-            data: obj,
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if(result.event === 'Add'){
-                this.addRowData(result.data);
-            }else if(result.event === 'Update'){
-                this.updateRowData(result.data);
-            }else if(result.event === 'Delete'){
-                this.deleteRowData(result.data);
+    openEditUserForm(idToPass) {
+        // this.dialog.open(EditUserComponent, id);
+        return this.dialog.open(EditUserComponent, {
+            data: {
+                key: idToPass
             }
         });
     }
-
-    addRowData(row_obj){
-        var d = new Date();
-        this.dataSource.push({
-            id: d.getTime(),
-            username: row_obj.username,
-            password: row_obj.password,
-            usertype: row_obj.usertype,
-            courses: row_obj.courses,
-            grades: row_obj.grades
-        });
-        this.table.renderRows();
-
-    }
-    updateRowData (row_obj) {
-        this.dataSource = this.dataSource.filter((value, key) => {
-            if (value.id === row_obj.id){
-                value.username = row_obj.username;
-                value.password = row_obj.password;
-                value.usertype = row_obj.usertype;
-                value.courses = row_obj.courses;
-                value.grades = row_obj.grades;
-            }
-            return true;
-        });
-    }
-    deleteRowData (row_obj) {
-        this.dataSource = this.dataSource.filter((value, key) => {
-            return value.id !== row_obj.id;
-        });
-    }*/
-
 }

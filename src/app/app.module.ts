@@ -36,17 +36,19 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { EditGradesComponent } from './layout/edit-grades/edit-grades.component';
+import { ManageCoursesComponent } from './layout/manage-courses/manage-courses.component';
 
 @NgModule({
     imports: [
         CommonModule,
         BrowserModule,
-        NgbModule,
         BrowserAnimationsModule,
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
         AppRoutingModule,
+        NgbModule,
         NgbCarouselModule,
         PageHeaderModule,
         MatDialogModule,
@@ -75,7 +77,9 @@ import { MatTableModule } from '@angular/material/table';
         AddUserComponent,
         AddStudentComponent,
         AddProfessorComponent,
-        EditUserComponent
+        EditUserComponent,
+        EditGradesComponent,
+        ManageCoursesComponent
     ],
     entryComponents: [
         AddUserComponent,

@@ -3,7 +3,7 @@ import { GRADES, User, UserType } from '../../shared/user';
 import { COURSES } from '../../shared/courses';
 import { USERS } from '../../shared/users';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user',
@@ -18,10 +18,20 @@ export class AddUserComponent implements OnInit {
     selectedType = '';
     selectedCourse = '';
     selectedGrade = '';
-    userID;
+    // userID;
+
+/*    addUserForm = this.fb.group({
+        id: ['', Validators.required],
+        username: ['', Validators.required],
+        password: ['', Validators.required],
+        usertype: [''],
+        courses: [''],
+        grades: ['']
+    });*/
 
   constructor(public dialogRef: MatDialogRef<AddUserComponent>,
               private fb: FormBuilder) {
+      this.selectedGrade = 'null';
   }
 
   ngOnInit(): void {
@@ -38,7 +48,7 @@ export class AddUserComponent implements OnInit {
 
       this.user.courses.push(course);
 
-          if (selectedType === 'Student') {
+          if (selectedType === 'student') {
               this.user.grades.push(selectedGrade);
           }
 
@@ -56,6 +66,9 @@ export class AddUserComponent implements OnInit {
 
     radioGradeChangeHandler(event: any) {
         this.selectedGrade = event.target.value;
+        if (event === null) {
+            this.selectedGrade = 'null';
+        }
     }
 
     closeDialog() {

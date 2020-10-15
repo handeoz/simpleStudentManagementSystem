@@ -1,20 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, ViewChild, AfterViewInit, Optional } from '@angular/core';
 import { GRADES, User, UserType } from '../../shared/user';
 import { COURSES } from '../../shared/courses';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { USERS } from '../../shared/users';
 import { Course } from '../../shared/course';
-
-/*
-export interface UsersData {
-    id: string;
-    username: string;
-    password: string;
-    usertype: string;
-    courses: Course[];
-    grades?: String[];
-}
-*/
+import { EditGradesComponent } from '../edit-grades/edit-grades.component';
+import { ManageCoursesComponent } from '../manage-courses/manage-courses.component';
 
 @Component({
   selector: 'app-edit-user',
@@ -22,65 +13,49 @@ export interface UsersData {
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-    // action: string;
-    // local_data: any;
-
     userTypes = UserType;
     userlist = USERS;
     courselist = COURSES;
     Grades = GRADES;
-    user = <User>{};
 
-    selectedType = '';
     selectedCourse = '';
     selectedGrade = '';
 
-    userID;
+    user: User;
 
-  constructor(public dialogRef: MatDialogRef<EditUserComponent>) { }
+  constructor(public dialogRef: MatDialogRef<EditUserComponent>,
+              @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+              public dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
+      console.log(this.data);
+      const usr = this.userlist.find(item => item.id === this.data.key);
+      console.log(usr);
+      this.user = usr;
+       // document.getElementById('inputId3').innerText = usr.id;
   }
+
+/*  ngAfterViewInit() {
+        console.log(this.divView);
+        this.divView.nativeElement.innerHTML = 'Hello Angular 10!';
+  }*/
 
     onSubmit() {
 
     }
 
-    editUser(id) {
-     let usr = this.userlist.find (item => item.id === id);
-/*        if (document.getElementById('edit_{{user.username}}')) {
-           // let user = this.userlist.find(user => user.username === username);
+    editUser(selectedCourseName, selectedGrade) {
+        this.selectedGrade = selectedGrade;
 
-            const datatabindex = this.userlist.map(function(item) {
-                return item.username;
-            }).indexOf(username);
-
-            document.getElementById('inputId3').innerHTML = this.userlist[datatabindex].id;
-            document.getElementById('inputUsername3').innerHTML = this.userlist[datatabindex].username;
-            document.getElementById('inputPassword3').innerHTML = this.userlist[datatabindex].password;*/
-/*        this.userlist = this.userlist.filter((value, key) => {
-            if (value.id === id) {
-                value.username = document.getElementById()
-            }
-        });*/
-        // document.getElementById('id_{{user.id}}').innerHTML = usr.id;
+        const selectedCourse = this.courselist.find(item => item.name === selectedCourseName);
+        const index = this.user.courses.indexOf(selectedCourse);
+        this.user.grades[index] = selectedGrade;
 
 
         this.dialogRef.close();
     }
 
-/*    doAction() {
-        this.dialogRef.close({event: this.action, data: this.local_data});
-    }
-
-    closeDialog() {
-        this.dialogRef.close({event: 'Cancel'});
-    }*/
-
-
-/*    radioTypeChangeHandler (event: any) {
-        this.selectedType = event.target.value;
-    }
 
     radioCourseChangeHandler(event: any) {
         this.selectedCourse = event.target.value;
@@ -88,5 +63,13 @@ export class EditUserComponent implements OnInit {
 
     radioGradeChangeHandler(event: any) {
         this.selectedGrade = event.target.value;
-    }*/
+    }
+
+    manageCourses(user) {
+        return this.dialog.open(ManageCoursesComponent, {
+            data: {
+                key: user
+            }
+        });
+    }
 }

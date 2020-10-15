@@ -1,5 +1,6 @@
 import { Course } from './course';
-
+import { Injectable } from '@angular/core';
+@Injectable()
 export class User {
     id: string;
     username: string;
@@ -18,5 +19,15 @@ export class User {
 }
 
 
-export const UserType = ['Professor', 'Student'];
-export const GRADES = ['AA', 'BA', 'BB', 'CB', 'CC', 'DC', 'DD'];
+export const UserType = ['professor', 'student'];
+/*export enum GRADES {
+    AA = 'AA',
+    BA = 'BA',
+    BB = 'BB',
+    CB = 'CB',
+    CC = 'CC',
+    DC = 'DC',
+    DD = 'DD'
+}*/
+
+export const GRADES = ['null', 'AA', 'BA', 'BB', 'CB', 'CC', 'DC', 'DD'];

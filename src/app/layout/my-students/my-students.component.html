@@ -9,6 +9,7 @@
                 <th>Course Name</th>
                 <th>Students</th>
                 <th>Grades</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody *ngFor="let course of user.courses">
@@ -19,7 +20,7 @@
                     {{usr.username}}
                     </span>
                 </p></td>
-                <td contenteditable="true">
+                <td>
                     <p *ngFor="let usr of userlist">
                     <span *ngIf="usr.courses.includes(course) && usr.usertype === 'student'">
                         <span *ngIf="usr.grades[usr.courses.indexOf(course)]">
@@ -27,6 +28,9 @@
                         </span>
                     </span>
                     </p>
+                </td>
+                <td>
+                    <button mat-flat-button color="primary" (click)="edit(course.id)" id="edit_{{user.username}}">Edit</button>
                 </td>
             </tr>
             </tbody>
