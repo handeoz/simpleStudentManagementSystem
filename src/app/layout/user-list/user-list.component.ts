@@ -1,30 +1,13 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { USERS } from '../../shared/users';
 import { COURSES } from '../../shared/courses';
 import { User } from '../../shared/user';
 import { MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { SignupComponent } from '../../signup/signup.component';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { EditUserComponent } from '../edit-user/edit-user.component';
-import { Course } from '../../shared/course';
 import { MatTable } from '@angular/material/table';
 
-/*export interface UsersData {
-    id: number;
-    username: string;
-    password: string;
-    usertype: string;
-    courses: Course[];
-    grades?: String[];
-}
-
-const ELEMENT_DATA: UsersData[] = [
-    {id: 1560608769632, username: 'Artificial Intelligence', password: '123', usertype: 'student', courses: [], grades: []},
-    {id: 1560608796014, username: 'Machine Learning', password: '123', usertype: 'prof', courses: [], grades: []},
-    {id: 1560608787815, username: 'Robotic Process Automation', password: '123', usertype: 'prof', courses: [], grades: []},
-    {id: 1560608805101, username: 'Blockchain', password: '123', usertype: 'prof', courses: [], grades: []}
-];*/
 
 @Component({
   selector: 'app-user-list',
@@ -44,11 +27,6 @@ export class UserListComponent implements OnInit {
 
     ngOnInit(): void {
     }
-
-/*    ngAfterViewInit() {
-        console.log(this.divView);
-        this.divView.nativeElement.innerHTML = 'Hello Angular 10!';
-    }*/
 
     delete(id) {
         this.datatabindex = this.userlist.map(function(item) {
